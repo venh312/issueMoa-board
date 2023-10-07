@@ -2,7 +2,7 @@ package com.issuemoa.board.service;
 
 import com.issuemoa.board.domain.Board;
 import com.issuemoa.board.domain.BoardRepository;
-import com.issuemoa.board.domain.board.QBoard;
+import com.issuemoa.board.domain.QBoard;
 import com.querydsl.core.types.Projections;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -41,8 +41,8 @@ public class BoardService {
                     board.type,
                     board.title,
                     board.contents,
-                    board.videoUrl,
-                    board.readCnt,
+                    board.url,
+                    board.readCount,
                     board.registerTime
                 ))
                 .from(board)
@@ -84,8 +84,8 @@ public class BoardService {
             board.allTimeYn,
             board.title,
             board.contents,
-            board.videoUrl,
-            board.readCnt,
+            board.url,
+            board.readCount,
             board.registerTime
         ))
         .from(board)
@@ -93,7 +93,7 @@ public class BoardService {
         .fetchOne();
 
         jpaQueryFactory.update(board)
-            .set(board.readCnt, info.getReadCount() + 1)
+            .set(board.readCount, info.getReadCount() + 1)
             .where(board.id.eq(id))
             .execute();
 
