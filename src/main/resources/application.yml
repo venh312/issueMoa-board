@@ -1,0 +1,18 @@
+server:
+  port: 17070
+spring:
+  application:
+    name: issueMoaBoard
+  profiles:
+    active: dev
+  config:
+    import: optional:configserver:http://localhost:8888
+management: # Actuator config
+  endpoints:
+    web:
+      exposure:
+        include: refresh
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
