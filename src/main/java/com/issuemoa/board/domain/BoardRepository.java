@@ -1,7 +1,9 @@
 package com.issuemoa.board.domain;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.mongodb.repository.MongoRepository;
+import java.util.List;
 
-public interface BoardRepository extends JpaRepository<Board, Long> {
-    public int countByTypeAndRegisterId(String type, Long registerId);
+public interface BoardRepository extends MongoRepository<Board, String> {
+    List<Board> findByType(String type, Pageable pageable);
 }
