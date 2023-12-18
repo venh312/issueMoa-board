@@ -21,12 +21,12 @@ public class BoardController {
     @GetMapping("/board/{type}/list")
         public ResponseEntity<RestMessage> findAll(Locale locale,
                                         @PathVariable("type") String type,
-                                        @RequestParam(required = false, defaultValue = "0") Integer page,
-                                        @RequestParam(required = false, defaultValue = "10") Integer pageSize) {
+                                        @RequestParam(required = false, defaultValue = "0") Integer skip,
+                                        @RequestParam(required = false, defaultValue = "20") Integer limit) {
 
-        log.info("local message : {}", messages.getMessage("board.select.empty", null, locale));
+        //log.info("local message : {}", messages.getMessage("board.select.empty", null, locale));
         return ResponseEntity.ok()
             .headers(new HttpHeaders())
-            .body(new RestMessage(HttpStatus.OK, boardService.findByType(type, page, pageSize)));
+            .body(new RestMessage(HttpStatus.OK, boardService.findByType(type, skip, limit)));
     }
 }
