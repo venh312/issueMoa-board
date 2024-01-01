@@ -1,4 +1,4 @@
-package com.issuemoa.board.domain;
+package com.issuemoa.board.domain.board;
 
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.mongodb.repository.MongoRepository;

@@ -1,7 +1,7 @@
 package com.issuemoa.board.service;
 
-import com.issuemoa.board.domain.Board;
-import com.issuemoa.board.domain.BoardRepository;
+import com.issuemoa.board.domain.board.Board;
+import com.issuemoa.board.domain.board.BoardRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;

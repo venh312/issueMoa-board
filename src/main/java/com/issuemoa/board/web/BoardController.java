@@ -1,6 +1,6 @@
 package com.issuemoa.board.web;
 
-import com.issuemoa.board.domain.Board;
+import com.issuemoa.board.domain.board.Board;
 import com.issuemoa.board.message.RestMessage;
 import com.issuemoa.board.service.BoardService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -32,10 +32,10 @@ public class BoardController {
             @ApiResponse(responseCode = "404", description = "존재하지 않는 리소스 접근")})
     @Operation(summary = "Issue 목록", description = "NEWS / YOUTUBE 목록을 불러온다.")
     @GetMapping("/board/{type}/list")
-        public ResponseEntity<RestMessage> findAll(Locale locale,
-            @Parameter(description = "news / youtube") @PathVariable("type") String type,
-            @Parameter(description = "페이지 번호 1씩 증가") @RequestParam(required = false, defaultValue = "0") Integer skip,
-            @RequestParam(required = false, defaultValue = "20") Integer limit) {
+    public ResponseEntity<RestMessage> findAll(Locale locale,
+        @Parameter(description = "news / youtube") @PathVariable("type") String type,
+        @Parameter(description = "페이지 번호 1씩 증가") @RequestParam(required = false, defaultValue = "0") Integer skip,
+        @RequestParam(required = false, defaultValue = "20") Integer limit) {
 
         //log.info("local message : {}", messages.getMessage("board.select.empty", null, locale));
         return ResponseEntity.ok()

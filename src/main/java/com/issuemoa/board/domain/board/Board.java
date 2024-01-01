@@ -1,4 +1,4 @@
-package com.issuemoa.board.domain;
+package com.issuemoa.board.domain.board;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AccessLevel;
