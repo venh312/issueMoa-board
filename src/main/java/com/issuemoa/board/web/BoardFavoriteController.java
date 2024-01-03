@@ -1,8 +1,8 @@
 package com.issuemoa.board.web;
 
 import com.issuemoa.board.domain.board.favorite.BoardFavorite;
-import com.issuemoa.board.dto.boardfavorite.BoardFavoriteSave;
 import com.issuemoa.board.message.RestMessage;
+import com.issuemoa.board.record.boardfavorite.BoardFavoriteSave;
 import com.issuemoa.board.service.BoardFavoriteService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -31,15 +31,10 @@ public class BoardFavoriteController {
     @Operation(summary = "관심 이슈 등록", description = "관심 이슈를 등록한다.")
     @PostMapping("/board-favorite/save")
     public ResponseEntity<RestMessage> save(
-            @io.swagger.v3.oas.annotations.parameters.RequestBody(
-                    description = "첫 번째 RequestBody",
-                    required = true,
-                    content = @Content(schema = @Schema(implementation = BoardFavoriteSave.class))
-            )
-            BoardFavoriteSave request) {
+            @RequestBody BoardFavoriteSave request) {
         return ResponseEntity.ok()
-                .headers(new HttpHeaders())
-                .body(new RestMessage(HttpStatus.OK, boardFavoriteService.save(request)));
+            .headers(new HttpHeaders())
+            .body(new RestMessage(HttpStatus.OK, boardFavoriteService.save(request)));
     }
     
     @ApiResponses(value = {

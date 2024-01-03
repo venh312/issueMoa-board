@@ -2,7 +2,7 @@ package com.issuemoa.board.service;
 
 import com.issuemoa.board.domain.board.favorite.BoardFavorite;
 import com.issuemoa.board.domain.board.favorite.BoardFavoriteRepository;
-import com.issuemoa.board.dto.boardfavorite.BoardFavoriteSave;
+import com.issuemoa.board.record.boardfavorite.BoardFavoriteSave;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
