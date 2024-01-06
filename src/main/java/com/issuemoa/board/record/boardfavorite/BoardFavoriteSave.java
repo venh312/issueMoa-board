@@ -1,7 +1,6 @@
 package com.issuemoa.board.record.boardfavorite;
 
 import com.issuemoa.board.domain.board.favorite.BoardFavorite;
-import com.mongodb.assertions.Assertions;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.Assert;
