@@ -12,15 +12,23 @@ import java.time.LocalDateTime;
 public class BoardFavorite {
     @MongoId
     private String id;
-    private String boardId;
     private String userId;
+    private String type;
+    private String title;
+    private String contents;
+    private String url;
+    private String thumbnail;
     private LocalDateTime registerDateTime;
 
     @Builder
-    public BoardFavorite(String id, String boardId, String userId, LocalDateTime registerDateTime) {
+    public BoardFavorite(String id, String userId, String type, String title, String contents, String url, String thumbnail, LocalDateTime registerDateTime) {
         this.id = id;
-        this.boardId = boardId;
         this.userId = userId;
+        this.type = type;
+        this.title = title;
+        this.contents = contents;
+        this.url = url;
+        this.thumbnail = thumbnail;
         this.registerDateTime = registerDateTime;
     }
 }
