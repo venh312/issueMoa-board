@@ -3,6 +3,11 @@
 
 <img src="https://img.shields.io/badge/MongoDB-47A248?style=flat-square&logo=mongodb&logoColor=white"> <img src="https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=Docker&logoColor=white"> <img src="https://img.shields.io/badge/Spring Docs & Swagger-85EA2D?style=flat-square&logo=swagger&logoColor=black">
 
+## 📌 JDK 설치
+```bash
+sudo apt-get update
+sudo apt-get install -y openjdk-17-jdk
+```
 
 ## 📌 도커로 실행하기
 ### 1. 도커 이미지 빌드
