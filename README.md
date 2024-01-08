@@ -5,8 +5,8 @@
 
 ## 📌 JDK 설치
 ```bash
-sudo apt-get update
-sudo apt-get install -y openjdk-17-jdk
+$ sudo apt-get update
+$ sudo apt-get install -y openjdk-17-jdk
 ```
 
 ## 📌 도커로 실행하기
