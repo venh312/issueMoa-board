@@ -2,6 +2,7 @@ package com.issuemoa.board.web;
 
 import com.issuemoa.board.domain.board.Board;
 import com.issuemoa.board.message.RestMessage;
+import com.issuemoa.board.record.BoardFavoriteSave;
 import com.issuemoa.board.service.BoardService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -39,7 +40,18 @@ public class BoardController {
 
         //log.info("local message : {}", messages.getMessage("board.select.empty", null, locale));
         return ResponseEntity.ok()
-            .headers(new HttpHeaders())
-            .body(new RestMessage(HttpStatus.OK, boardService.findByType(type, skip, limit)));
+                    .headers(new HttpHeaders())
+                    .body(new RestMessage(HttpStatus.OK, boardService.findByType(type, skip, limit)));
+    }
+
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "등록 성공", content = @Content(schema = @Schema(implementation = Board.class))),
+            @ApiResponse(responseCode = "404", description = "존재하지 않는 리소스 접근")})
+    @Operation(summary = "관심 게시글 등록", description = "관심 게시글을 등록한다.")
+    @PostMapping("/board/favorite")
+    public ResponseEntity<RestMessage> addFavoriteBoards(@RequestBody BoardFavoriteSave boardFavoriteSave) {
+        return ResponseEntity.ok()
+                    .headers(new HttpHeaders())
+                    .body(new RestMessage(HttpStatus.OK, boardService.addFavoriteBoards(boardFavoriteSave)));
     }
 }
