@@ -3,9 +3,9 @@ package com.issuemoa.board.service;
 import com.issuemoa.board.domain.board.Board;
 import com.issuemoa.board.domain.board.BoardRepository;
 import com.issuemoa.board.record.BoardFavoriteSave;
+import com.issuemoa.board.record.BoardFavoriteSearch;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.bson.types.ObjectId;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -32,5 +32,9 @@ public class BoardService {
         }
 
         return null;
+    }
+
+    public List<Board> findByFavoriteUserIdsContaining(BoardFavoriteSearch boardFavoriteSearch) {
+          return boardRepository.findByFavoriteUserIdsContaining(boardFavoriteSearch.userId());
     }
 }

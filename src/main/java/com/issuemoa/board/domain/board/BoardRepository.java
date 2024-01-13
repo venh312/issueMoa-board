@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface BoardRepository extends MongoRepository<Board, String> {
     List<Board> findByType(String type, Pageable pageable);
+    List<Board> findByFavoriteUserIdsContaining(String userId);
 }

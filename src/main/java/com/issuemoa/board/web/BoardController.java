@@ -3,6 +3,7 @@ package com.issuemoa.board.web;
 import com.issuemoa.board.domain.board.Board;
 import com.issuemoa.board.message.RestMessage;
 import com.issuemoa.board.record.BoardFavoriteSave;
+import com.issuemoa.board.record.BoardFavoriteSearch;
 import com.issuemoa.board.service.BoardService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -53,5 +54,16 @@ public class BoardController {
         return ResponseEntity.ok()
                     .headers(new HttpHeaders())
                     .body(new RestMessage(HttpStatus.OK, boardService.addFavoriteBoards(boardFavoriteSave)));
+    }
+
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "조회 성공", content = @Content(schema = @Schema(implementation = Board.class))),
+            @ApiResponse(responseCode = "404", description = "존재하지 않는 리소스 접근")})
+    @Operation(summary = "관심 게시글 목록", description = "관심 NEWS / YOUTUBE 목록을 불러온다.")
+    @GetMapping("/board/favorite")
+    public ResponseEntity<RestMessage> findByFavoriteUserIdsContaining(BoardFavoriteSearch boardFavoriteSearch) {
+        return ResponseEntity.ok()
+                .headers(new HttpHeaders())
+                .body(new RestMessage(HttpStatus.OK, boardService.findByFavoriteUserIdsContaining(boardFavoriteSearch)));
     }
 }
