@@ -2,9 +2,8 @@ package com.issuemoa.board.domain.board;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
-import org.bson.types.ObjectId;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.MongoId;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -16,8 +15,8 @@ import java.util.List;
 @Document(collection = "board")
 public class Board {
     @Schema(description = "IDX")
-    @MongoId
-    private ObjectId id;
+    @Id
+    private String id;
 
     @Schema(description = "news / youtube")
     private String type;
