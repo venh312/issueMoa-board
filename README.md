@@ -1,7 +1,7 @@
 ## 📌 적용 기술
-<img src="https://img.shields.io/badge/JAVA-2F2625?style=flat-square&logo=coffeescript&logoColor=white"> <img src="https://img.shields.io/badge/Spring Boot-6DB33F?style=flat-square&logo=SpringBoot&logoColor=white"> <img src="https://img.shields.io/badge/Spring Data JPA & Querydsl-6DB33F?style=flat-square&logo=spring&logoColor=white"> 
+<img src="https://img.shields.io/badge/JAVA-2F2625?style=flat-square&logo=coffeescript&logoColor=white"> <img src="https://img.shields.io/badge/MongoDB-47A248?style=flat-square&logo=mongodb&logoColor=white"> <img src="https://img.shields.io/badge/Spring Boot-6DB33F?style=flat-square&logo=SpringBoot&logoColor=white"> <img src="https://img.shields.io/badge/Spring Data JPA & Querydsl-6DB33F?style=flat-square&logo=spring&logoColor=white"> 
 
-<img src="https://img.shields.io/badge/MongoDB-47A248?style=flat-square&logo=mongodb&logoColor=white"> <img src="https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=Docker&logoColor=white"> <img src="https://img.shields.io/badge/Spring Docs & Swagger-85EA2D?style=flat-square&logo=swagger&logoColor=black">
+<img src="https://img.shields.io/badge/Jenkins-D24939?style=flat-square&logo=jenkins&logoColor=white"> <img src="https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=Docker&logoColor=white"> <img src="https://img.shields.io/badge/Spring Docs & Swagger-85EA2D?style=flat-square&logo=swagger&logoColor=black">
 
 ## 📌 JDK 설치
 ```bash
