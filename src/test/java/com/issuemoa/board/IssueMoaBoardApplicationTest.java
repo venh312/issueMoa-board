@@ -15,6 +15,4 @@ class IssueMoaBoardApplicationTest {
     void MongoBoard_조회() {
         Assert.notEmpty(mongoRepository.findAll(), "조회 결과가 없습니다.");
     }
-
-
 }
