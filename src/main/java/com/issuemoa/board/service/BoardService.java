@@ -9,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.Optional;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -22,9 +23,10 @@ public class BoardService {
     }
 
     public Board addFavoriteBoards(BoardFavoriteSave boardFavoriteSave) {
-        Board board = boardRepository.findById(boardFavoriteSave.boardId()).orElse(null);
+        Optional<Board> boardOptional = boardRepository.findById(boardFavoriteSave.boardId());
 
-        if (board != null) {
+        if (boardOptional.isPresent()) {
+            Board board = boardOptional.get();
             List<String> userIds = board.getFavoriteUserIds();
             userIds.add(boardFavoriteSave.userId());
             board.setFavoriteUserIds(userIds);

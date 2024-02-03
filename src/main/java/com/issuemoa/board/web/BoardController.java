@@ -63,7 +63,7 @@ public class BoardController {
     @GetMapping("/board/favorite")
     public ResponseEntity<RestMessage> findByFavoriteUserIdsContaining(BoardFavoriteSearch boardFavoriteSearch) {
         return ResponseEntity.ok()
-                .headers(new HttpHeaders())
-                .body(new RestMessage(HttpStatus.OK, boardService.findByFavoriteUserIdsContaining(boardFavoriteSearch)));
+                    .headers(new HttpHeaders())
+                    .body(new RestMessage(HttpStatus.OK, boardService.findByFavoriteUserIdsContaining(boardFavoriteSearch)));
     }
 }
