@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public class Board {
-    private String id;
+    private Long id;
     private String type;
     private String title;
     private String contents;
@@ -16,7 +16,7 @@ public class Board {
     // private 생성자: 외부에서 직접 생성하지 못하도록 함
     private Board() {}
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
@@ -124,6 +124,7 @@ public class Board {
 
         public Board build() {
             Board board = new Board();
+            board.id = this.id;
             board.type = this.type;
             board.title  = this.title;
             board.contents = this.contents;

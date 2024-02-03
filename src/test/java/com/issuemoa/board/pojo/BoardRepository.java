@@ -8,7 +8,7 @@ public class BoardRepository {
     private Long sequence = 0L;
 
     public Long save(Board board) {
-        list.add(new Board.Builder(board).id(sequence++).build());
+        list.add(new Board.Builder(board).id(++sequence).build());
         return sequence;
     }
 
