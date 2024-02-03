@@ -29,6 +29,17 @@ public class BoardControllerTest {
                 null
         );
         Assertions.assertTrue(boardService.save(boardSaveRequest) > 0L);
+
+        BoardSaveRequest boardSaveRequest2 = new BoardSaveRequest(
+                "Youtube",
+                "Appl2e",
+                "MacOS2",
+                "https://apple2.com",
+                "apple2.jpg",
+                null,
+                null
+        );
+        Assertions.assertTrue(boardService.save(boardSaveRequest2) > 0L);
     }
 
     @Test
