@@ -17,6 +17,7 @@ ext {
 }
 
 dependencies {
+	implementation 'io.micrometer:micrometer-registry-prometheus'
 	implementation 'org.springdoc:springdoc-openapi-ui:1.6.12'
 	implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
 	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
