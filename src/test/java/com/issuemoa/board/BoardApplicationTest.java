@@ -7,7 +7,7 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.util.Assert;
 
 @SpringBootTest
-class IssueMoaBoardApplicationTest {
+class BoardApplicationTest {
     @Autowired
     private MongoRepository mongoRepository;
 
