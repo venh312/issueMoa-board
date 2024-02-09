@@ -2,9 +2,9 @@ package com.issuemoa.board.web;
 
 import com.issuemoa.board.domain.board.Board;
 import com.issuemoa.board.message.RestMessage;
-import com.issuemoa.board.record.BoardFavoriteSave;
-import com.issuemoa.board.record.BoardFavoriteSearch;
-import com.issuemoa.board.service.BoardService;
+import com.issuemoa.board.service.board.BoardFavoriteSave;
+import com.issuemoa.board.service.board.BoardFavoriteSearch;
+import com.issuemoa.board.service.board.BoardService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -41,8 +41,8 @@ public class BoardController {
 
         //log.info("local message : {}", messages.getMessage("board.select.empty", null, locale));
         return ResponseEntity.ok()
-                    .headers(new HttpHeaders())
-                    .body(new RestMessage(HttpStatus.OK, boardService.findByType(type, skip, limit)));
+                .headers(new HttpHeaders())
+                .body(new RestMessage(HttpStatus.OK, boardService.findByType(type, skip, limit)));
     }
 
     @ApiResponses(value = {
