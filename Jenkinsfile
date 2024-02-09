@@ -38,7 +38,7 @@ pipeline {
                         sh "docker rm issuemoa-board"
                     }
                     
-                    sh "docker run -d --name issuemoa-board -p 17060:17060 -v /home/venh/logs:/var/log --network issuemoa issuemoa/board"
+                    sh "docker run -d --name issuemoa-board -p 17060:17060 -v /home/venh/logs:/var/log --network issuemoa -e TZ=Asia/Seoul issuemoa/board"
                 }
             }
         }
