@@ -9,13 +9,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class InquiryService {
     private final InquiryRepository inquiryRepository;
-    private final InquiryProducer inquiryConsumer;
+    private final InquiryProducer inquiryProducer;
 
     public Long save(InquirySaveRequest inquirySaveRequest) {
         Long result = inquiryRepository.save(inquirySaveRequest.toEntity()).getId();
 
         if (result > 0) {
-            inquiryConsumer.sendMessage(new InquirySaveProducerRequest(result, "새로운 고객문의가 등록되었습니다."));
+            inquiryProducer.sendMessage(new InquirySaveProducerRequest(result, "새로운 고객문의가 등록되었습니다."));
         }
 
         return result;
