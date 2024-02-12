@@ -12,10 +12,10 @@ public record InquirySaveRequest(
 ) {
     public Inquiry toEntity() {
         return Inquiry.builder()
-                    .name(name)
-                    .email(email)
-                    .type(type)
-                    .contents(contents)
-                    .build();
+                .name(name)
+                .email(email)
+                .type(type)
+                .contents(contents)
+                .build();
     }
 }

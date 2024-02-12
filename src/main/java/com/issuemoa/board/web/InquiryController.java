@@ -29,7 +29,7 @@ public class InquiryController {
     @PostMapping("/inquiry")
     public ResponseEntity<RestMessage> save(@RequestBody InquirySaveRequest inquirySaveRequest) {
         return ResponseEntity.ok()
-                    .headers(new HttpHeaders())
-                    .body(new RestMessage(HttpStatus.OK, inquiryService.save(inquirySaveRequest)));
+                .headers(new HttpHeaders())
+                .body(new RestMessage(HttpStatus.OK, inquiryService.save(inquirySaveRequest)));
     }
 }
