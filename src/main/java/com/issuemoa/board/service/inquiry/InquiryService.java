@@ -15,7 +15,7 @@ public class InquiryService {
         Long result = inquiryRepository.save(inquirySaveRequest.toEntity()).getId();
 
         if (result > 0) {
-            inquiryProducer.sendMessage(new InquirySaveProducerRequest(result, "새로운 고객문의가 등록되었습니다."));
+            inquiryProducer.sendMessage(inquirySaveRequest);
         }
 
         return result;

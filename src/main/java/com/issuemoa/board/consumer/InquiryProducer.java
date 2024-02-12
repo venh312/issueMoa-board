@@ -1,8 +1,9 @@
 package com.issuemoa.board.consumer;
 
-import com.issuemoa.board.service.inquiry.InquirySaveProducerRequest;
+import com.issuemoa.board.service.inquiry.InquirySaveRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.kafka.clients.producer.ProducerRecord;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
 
@@ -13,8 +14,11 @@ public class InquiryProducer {
     private static final String TOPIC_NAME = "issuemoa-topic";
     private final KafkaTemplate<String, String> kafkaTemplate;
 
-    public void sendMessage(InquirySaveProducerRequest inquirySaveConsumerRequest) {
-        kafkaTemplate.send(TOPIC_NAME, String.valueOf(inquirySaveConsumerRequest.id()), inquirySaveConsumerRequest.message());
-        log.info("Produced message: {}", inquirySaveConsumerRequest);
+    public void sendMessage(InquirySaveRequest inquirySaveRequest) {
+        ProducerRecord<String, String> record = new ProducerRecord<>(TOPIC_NAME, inquirySaveRequest.email(), inquirySaveRequest.contents());
+
+        kafkaTemplate.send(record);
+
+        log.info("Produced message: {}", inquirySaveRequest);
     }
 }
