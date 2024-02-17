@@ -6,4 +6,4 @@ springdoc:
 
 endpoint:
   users:
-    info: http://61.102.114.235:17070/users/info
+    info: http://192.168.0.31:17070/users/info
