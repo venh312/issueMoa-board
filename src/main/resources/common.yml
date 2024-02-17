@@ -3,3 +3,7 @@ springdoc:
     path: /board/v3/api-docs
   swagger-ui:
     path: /board/swagger-ui.html
+
+endpoint:
+  users:
+    info: http://61.102.114.235:17070/users/info

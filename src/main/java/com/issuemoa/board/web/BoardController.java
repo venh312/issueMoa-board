@@ -1,9 +1,9 @@
 package com.issuemoa.board.web;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.issuemoa.board.domain.board.Board;
 import com.issuemoa.board.message.RestMessage;
 import com.issuemoa.board.service.board.BoardFavoriteSave;
-import com.issuemoa.board.service.board.BoardFavoriteSearch;
 import com.issuemoa.board.service.board.BoardService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -19,6 +19,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import javax.servlet.http.HttpServletRequest;
 import java.util.Locale;
 
 @Tag(name = "Issue", description = "Issue API")
@@ -41,8 +42,8 @@ public class BoardController {
 
         //log.info("local message : {}", messages.getMessage("board.select.empty", null, locale));
         return ResponseEntity.ok()
-                    .headers(new HttpHeaders())
-                    .body(new RestMessage(HttpStatus.OK, boardService.findByType(type, skip, limit)));
+                .headers(new HttpHeaders())
+                .body(new RestMessage(HttpStatus.OK, boardService.findByType(type, skip, limit)));
     }
 
     @ApiResponses(value = {
@@ -50,10 +51,16 @@ public class BoardController {
             @ApiResponse(responseCode = "404", description = "존재하지 않는 리소스 접근")})
     @Operation(summary = "관심 게시글 등록", description = "관심 게시글을 등록한다.")
     @PostMapping("/board/favorite")
-    public ResponseEntity<RestMessage> addFavoriteBoards(@RequestBody BoardFavoriteSave boardFavoriteSave) {
-        return ResponseEntity.ok()
+    public ResponseEntity<RestMessage> addFavoriteBoards(
+            HttpServletRequest httpServletRequest,
+            @RequestBody BoardFavoriteSave boardFavoriteSave) {
+        try {
+            return ResponseEntity.ok()
                     .headers(new HttpHeaders())
-                    .body(new RestMessage(HttpStatus.OK, boardService.addFavoriteBoards(boardFavoriteSave)));
+                    .body(new RestMessage(HttpStatus.OK, boardService.addFavoriteBoards(httpServletRequest, boardFavoriteSave)));
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @ApiResponses(value = {
@@ -61,9 +68,13 @@ public class BoardController {
             @ApiResponse(responseCode = "404", description = "존재하지 않는 리소스 접근")})
     @Operation(summary = "관심 게시글 목록", description = "관심 NEWS / YOUTUBE 목록을 불러온다.")
     @GetMapping("/board/favorite")
-    public ResponseEntity<RestMessage> findByFavoriteUserIdsContaining(BoardFavoriteSearch boardFavoriteSearch) {
-        return ResponseEntity.ok()
+    public ResponseEntity<RestMessage> findByFavoriteUserIdsContaining(HttpServletRequest httpServletRequest) {
+        try {
+            return ResponseEntity.ok()
                     .headers(new HttpHeaders())
-                    .body(new RestMessage(HttpStatus.OK, boardService.findByFavoriteUserIdsContaining(boardFavoriteSearch)));
+                    .body(new RestMessage(HttpStatus.OK, boardService.findByFavoriteUserIdsContaining(httpServletRequest)));
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
