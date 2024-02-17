@@ -30,9 +30,9 @@ public record BoardListResponse(
         List<String> favoriteUserIds,
 
         @Schema(description = "등록시간")
-        LocalDateTime registerDateTime
+        String registerDateTime
 ) {
-    public String getRegisterDateTime() {
+    public String getRegisterDateTime(LocalDateTime registerDateTime) {
         return BaseTime.toStringDateTime(registerDateTime);
     }
 }
