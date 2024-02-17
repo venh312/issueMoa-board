@@ -19,9 +19,10 @@ public class ConvertUtil {
             // "data" 객체에서 "id" 필드 추출
             JsonNode dataNode = jsonNode.get("data");
             if (dataNode != null) {
+
                 JsonNode idNode = dataNode.get("id");
                 if (idNode != null) {
-                    long idValue = idNode.asLong();
+                    String idValue = String.valueOf(idNode);
                     result.put("id", idValue);
                     log.info("ID: {}", idValue);
                 } else {

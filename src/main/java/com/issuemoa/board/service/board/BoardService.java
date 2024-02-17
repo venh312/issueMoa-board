@@ -32,7 +32,7 @@ public class BoardService {
 
         if (userInfo == null) return null;
 
-        String userId = ((String) userInfo.get("id"));
+        String userId = (String) userInfo.get("id");
 
         Optional<Board> boardOptional = boardRepository.findById(boardFavoriteSave.boardId());
 
@@ -52,7 +52,7 @@ public class BoardService {
 
         if (userInfo == null) return null;
 
-        String userId = ((String) userInfo.get("id"));
+        String userId = (String) userInfo.get("id");
 
         return boardRepository.findByFavoriteUserIdsContaining(userId);
     }
