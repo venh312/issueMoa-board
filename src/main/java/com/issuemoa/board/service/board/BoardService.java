@@ -4,6 +4,7 @@ import com.issuemoa.board.domain.board.Board;
 import com.issuemoa.board.domain.board.BoardRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -15,6 +16,7 @@ import java.util.Optional;
 public class BoardService {
     private final BoardRepository boardRepository;
 
+    @Cacheable(value = "board", key = "#type", cacheManager = "contentCacheManager")
     public List<Board> findByType(String type, int skip, int limit) {
         PageRequest pageable = PageRequest.of(skip, limit);
         return boardRepository.findByType(type, pageable);
