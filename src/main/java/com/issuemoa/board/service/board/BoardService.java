@@ -17,7 +17,7 @@ public class BoardService {
     private final BoardRepository boardRepository;
 
     @Cacheable(value = "board", key = "#type", cacheManager = "contentCacheManager")
-    public List<Board> findByType(String type, int skip, int limit) {
+    public List<BoardListResponse> findByType(String type, int skip, int limit) {
         PageRequest pageable = PageRequest.of(skip, limit);
         return boardRepository.findByType(type, pageable);
     }
@@ -36,7 +36,7 @@ public class BoardService {
         return null;
     }
 
-    public List<Board> findByFavoriteUserIdsContaining(BoardFavoriteSearch boardFavoriteSearch) {
+    public List<BoardListResponse> findByFavoriteUserIdsContaining(BoardFavoriteSearch boardFavoriteSearch) {
           return boardRepository.findByFavoriteUserIdsContaining(boardFavoriteSearch.userId());
     }
 }
