@@ -1,19 +1,9 @@
-server:
-  port: 17060
 spring:
-  application:
-    name: issueMoaBoard
   config:
     import:
-      - common.yml
       - optional:configserver:http://61.102.114.235:8888
   kafka:
     bootstrap-servers: 192.168.0.31:9092
-management:
-  endpoints:
-    web:
-      exposure:
-        include: refresh
 eureka:
   instance:
     preferIpAddress: true # 서비스 이름 대신 서비스 IP 주소 등록
