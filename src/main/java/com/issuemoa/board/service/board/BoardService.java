@@ -1,7 +1,7 @@
 package com.issuemoa.board.service.board;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.issuemoa.board.common.UsersRestApi;
+import com.issuemoa.board.common.api.UsersRestApi;
 import com.issuemoa.board.domain.board.Board;
 import com.issuemoa.board.domain.board.BoardRepository;
 import lombok.RequiredArgsConstructor;
@@ -10,9 +10,7 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import javax.servlet.http.HttpServletRequest;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Optional;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -28,32 +26,18 @@ public class BoardService {
     }
 
     public Board addFavoriteBoards(HttpServletRequest httpServletRequest, BoardFavoriteSave boardFavoriteSave) throws JsonProcessingException {
-        HashMap<String, Object> userInfo = usersRestApi.getUserInfo(httpServletRequest);
+        Board board = boardRepository.findById(boardFavoriteSave.boardId()).orElseThrow(() ->  new NullPointerException("게시글이 존재하지 않습니다."));
+        String userId = usersRestApi.getUserId(httpServletRequest);
 
-        if (userInfo == null) return null;
+        List<String> userIds = board.getFavoriteUserIds();
+        userIds.add(userId);
+        board.setFavoriteUserIds(userIds);
 
-        String userId = (String) userInfo.get("id");
-
-        Optional<Board> boardOptional = boardRepository.findById(boardFavoriteSave.boardId());
-
-        if (boardOptional.isPresent()) {
-            Board board = boardOptional.get();
-            List<String> userIds = board.getFavoriteUserIds();
-            userIds.add(userId);
-            board.setFavoriteUserIds(userIds);
-            return boardRepository.save(board);
-        }
-
-        return null;
+        return boardRepository.save(board);
     }
 
     public List<BoardListResponse> findByFavoriteUserIdsContaining(HttpServletRequest httpServletRequest) throws JsonProcessingException {
-        HashMap<String, Object> userInfo = usersRestApi.getUserInfo(httpServletRequest);
-
-        if (userInfo == null) return null;
-
-        String userId = (String) userInfo.get("id");
-
+        String userId = usersRestApi.getUserId(httpServletRequest);
         return boardRepository.findByFavoriteUserIdsContaining(userId);
     }
 }
