@@ -1,6 +1,6 @@
 package com.issuemoa.board.domain.board;
 
-import com.issuemoa.board.service.board.BoardListResponse;
+import com.issuemoa.board.presentation.dto.BoardListResponse;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import java.util.List;

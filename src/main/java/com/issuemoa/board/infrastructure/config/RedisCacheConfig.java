@@ -1,4 +1,4 @@
-package com.issuemoa.board.config;
+package com.issuemoa.board.infrastructure.config;
 
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;

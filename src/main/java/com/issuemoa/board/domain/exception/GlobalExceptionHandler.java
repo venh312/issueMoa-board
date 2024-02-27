@@ -1,7 +1,6 @@
-package com.issuemoa.board.exception;
+package com.issuemoa.board.domain.exception;
 
-import com.issuemoa.board.common.ErrorMessage;
-import com.issuemoa.board.common.api.UsersNotFoundException;
+import com.issuemoa.board.presentation.dto.ErrorMessage;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;

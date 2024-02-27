@@ -1,4 +1,4 @@
-package com.issuemoa.board.common;
+package com.issuemoa.board.presentation.dto;
 
 import java.util.List;
 
