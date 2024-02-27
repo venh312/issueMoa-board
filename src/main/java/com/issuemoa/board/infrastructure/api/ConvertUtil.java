@@ -1,4 +1,4 @@
-package com.issuemoa.board.common;
+package com.issuemoa.board.infrastructure.api;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;

@@ -1,9 +1,10 @@
-package com.issuemoa.board.service.board;
+package com.issuemoa.board.application;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.issuemoa.board.common.api.UsersRestApi;
+import com.issuemoa.board.infrastructure.api.UsersRestApi;
 import com.issuemoa.board.domain.board.Board;
 import com.issuemoa.board.domain.board.BoardRepository;
+import com.issuemoa.board.presentation.dto.BoardFavoriteSave;
+import com.issuemoa.board.presentation.dto.BoardListResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.annotation.Cacheable;
@@ -25,7 +26,7 @@ public class BoardService {
         return boardRepository.findByType(type, pageable);
     }
 
-    public Board addFavoriteBoards(HttpServletRequest httpServletRequest, BoardFavoriteSave boardFavoriteSave) throws JsonProcessingException {
+    public Board addFavoriteBoards(HttpServletRequest httpServletRequest, BoardFavoriteSave boardFavoriteSave) {
         Board board = boardRepository.findById(boardFavoriteSave.boardId()).orElseThrow(() ->  new NullPointerException("게시글이 존재하지 않습니다."));
         String userId = usersRestApi.getUserId(httpServletRequest);
 
@@ -36,7 +37,7 @@ public class BoardService {
         return boardRepository.save(board);
     }
 
-    public List<BoardListResponse> findByFavoriteUserIdsContaining(HttpServletRequest httpServletRequest) throws JsonProcessingException {
+    public List<BoardListResponse> findByFavoriteUserIdsContaining(HttpServletRequest httpServletRequest) {
         String userId = usersRestApi.getUserId(httpServletRequest);
         return boardRepository.findByFavoriteUserIdsContaining(userId);
     }

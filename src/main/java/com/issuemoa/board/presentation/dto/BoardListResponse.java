@@ -1,4 +1,4 @@
-package com.issuemoa.board.service.board;
+package com.issuemoa.board.presentation.dto;
 
 import com.issuemoa.board.domain.BaseTime;
 import io.swagger.v3.oas.annotations.media.Schema;

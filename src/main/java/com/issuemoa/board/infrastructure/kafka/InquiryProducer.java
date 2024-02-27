@@ -1,6 +1,6 @@
-package com.issuemoa.board.consumer;
+package com.issuemoa.board.infrastructure.kafka;
 
-import com.issuemoa.board.service.inquiry.InquirySaveRequest;
+import com.issuemoa.board.presentation.dto.InquirySaveRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.producer.ProducerRecord;

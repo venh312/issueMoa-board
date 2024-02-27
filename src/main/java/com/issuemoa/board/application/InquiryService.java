@@ -1,7 +1,8 @@
-package com.issuemoa.board.service.inquiry;
+package com.issuemoa.board.application;
 
-import com.issuemoa.board.consumer.InquiryProducer;
+import com.issuemoa.board.infrastructure.kafka.InquiryProducer;
 import com.issuemoa.board.domain.inquiry.InquiryRepository;
+import com.issuemoa.board.presentation.dto.InquirySaveRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

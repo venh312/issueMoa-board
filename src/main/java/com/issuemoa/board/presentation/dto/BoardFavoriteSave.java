@@ -1,4 +1,4 @@
-package com.issuemoa.board.service.board;
+package com.issuemoa.board.presentation.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.extern.slf4j.Slf4j;
