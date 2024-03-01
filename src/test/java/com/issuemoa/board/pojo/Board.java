@@ -10,7 +10,6 @@ public class Board {
     private String contents;
     private String url;
     private String thumbnail;
-    private List<String> favoriteUserIds;
     private LocalDateTime registerDateTime;
 
     // private 생성자: 외부에서 직접 생성하지 못하도록 함
@@ -40,10 +39,6 @@ public class Board {
         return thumbnail;
     }
 
-    public List<String> getFavoriteUserIds() {
-        return favoriteUserIds;
-    }
-
     public LocalDateTime getRegisterDateTime() {
         return registerDateTime;
     }
@@ -57,7 +52,6 @@ public class Board {
                 ", contents='" + contents + '\'' +
                 ", url='" + url + '\'' +
                 ", thumbnail='" + thumbnail + '\'' +
-                ", favoriteUserIds=" + favoriteUserIds +
                 ", registerDateTime=" + registerDateTime +
                 '}';
     }
@@ -69,7 +63,6 @@ public class Board {
         private String contents;
         private String url;
         private String thumbnail;
-        private List<String> favoriteUserIds;
         private LocalDateTime registerDateTime;
         public Builder(){}
         public Builder(Board board) {
@@ -78,7 +71,6 @@ public class Board {
             this.contents = board.contents;
             this.url = board.url;
             this.thumbnail = board.thumbnail;
-            this.favoriteUserIds = board.favoriteUserIds;
             this.registerDateTime = board.registerDateTime;
         }
 
@@ -112,11 +104,6 @@ public class Board {
             return this;
         }
 
-        public Builder favoriteUserIds(List<String> favoriteUserIds) {
-            this.favoriteUserIds = favoriteUserIds;
-            return this;
-        }
-
         public Builder registerDateTime(LocalDateTime registerDateTime) {
             this.registerDateTime = registerDateTime;
             return this;
@@ -130,7 +117,6 @@ public class Board {
             board.contents = this.contents;
             board.url = this.url;
             board.thumbnail = this.thumbnail;
-            board.favoriteUserIds = this.favoriteUserIds;
             board.registerDateTime = this.registerDateTime;
             return board;
         }

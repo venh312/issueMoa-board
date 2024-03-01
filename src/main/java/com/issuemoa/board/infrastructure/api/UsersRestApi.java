@@ -1,6 +1,7 @@
 package com.issuemoa.board.infrastructure.api;
 
 import com.issuemoa.board.domain.exception.JsonProcessingException;
+import com.issuemoa.board.domain.exception.UsersNotFoundException;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
@@ -38,7 +39,12 @@ public class UsersRestApi {
 
     public String getUserId(HttpServletRequest httpServletRequest) {
         HashMap<String, Object> userInfo = getUserInfo(httpServletRequest);
-        return (String) userInfo.get("id");
+        String userId = (String) userInfo.get("id");
+
+        if (StringUtils.isBlank(userId))
+            throw new UsersNotFoundException("사용자 ID가 존재하지 않습니다.");
+
+        return userId;
     }
 
 }

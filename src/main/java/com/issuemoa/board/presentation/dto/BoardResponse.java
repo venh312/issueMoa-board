@@ -4,9 +4,8 @@ import com.issuemoa.board.domain.BaseTime;
 import io.swagger.v3.oas.annotations.media.Schema;
 import org.springframework.data.annotation.Id;
 import java.time.LocalDateTime;
-import java.util.List;
 
-public record BoardListResponse(
+public record BoardResponse(
         @Schema(description = "IDX")
         @Id
         String id,
@@ -25,9 +24,6 @@ public record BoardListResponse(
 
         @Schema(description = "썸네일")
         String thumbnail,
-
-        @Schema(description = "관심 등록 사용자 ID 목록")
-        List<String> favoriteUserIds,
 
         @Schema(description = "등록시간")
         String registerDateTime

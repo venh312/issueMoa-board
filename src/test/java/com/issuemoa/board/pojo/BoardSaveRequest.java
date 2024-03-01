@@ -9,9 +9,7 @@ public record BoardSaveRequest(
          String contents,
          String url,
          String thumbnail,
-         List<String>favoriteUserIds,
          LocalDateTime registerDateTime) {
-
 
     public Board toEntity() {
         return new Board.Builder()
@@ -20,7 +18,6 @@ public record BoardSaveRequest(
                     .contents(contents)
                     .url(url)
                     .thumbnail(thumbnail)
-                    .favoriteUserIds(favoriteUserIds)
                     .registerDateTime(registerDateTime)
                     .build();
     }
