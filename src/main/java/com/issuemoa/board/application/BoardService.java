@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -28,10 +29,12 @@ public class BoardService {
 
     public Board addFavoriteBoards(HttpServletRequest httpServletRequest, BoardFavoriteSave boardFavoriteSave) {
         Board board = boardRepository.findById(boardFavoriteSave.boardId()).orElseThrow(() ->  new NullPointerException("게시글이 존재하지 않습니다."));
-        String userId = usersRestApi.getUserId(httpServletRequest);
 
         List<String> userIds = board.getFavoriteUserIds();
+
+        String userId = usersRestApi.getUserId(httpServletRequest);
         userIds.add(userId);
+
         board.setFavoriteUserIds(userIds);
 
         return boardRepository.save(board);
@@ -39,6 +42,6 @@ public class BoardService {
 
     public List<BoardListResponse> findByFavoriteUserIdsContaining(HttpServletRequest httpServletRequest) {
         String userId = usersRestApi.getUserId(httpServletRequest);
-        return boardRepository.findByFavoriteUserIdsContaining(userId);
+        return boardRepository.findByFavoriteUserIdsContaining(userId, Sort.by(Sort.Direction.DESC, "registerDateTime"));
     }
 }
