@@ -1,22 +1,30 @@
-package com.issuemoa.board.domain.board;
+package com.issuemoa.board.domain.board.favorite;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-import java.time.LocalDateTime;
-import java.util.List;
 
-@Schema(name = "Board Response")
+import java.time.LocalDateTime;
+
+@Schema(name = "Board Favorites Response")
 @ToString
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @Setter
-@Document(collection = "board")
-public class Board {
+@Document(collection = "boardFavorites")
+@Builder
+public class BoardFavorites {
     @Schema(description = "IDX")
     @Id
     private String id;
+
+    @Schema(description = "Board ID")
+    String boardId;
+
+    @Schema(description = "User ID")
+    private String userId;
 
     @Schema(description = "news / youtube")
     private String type;

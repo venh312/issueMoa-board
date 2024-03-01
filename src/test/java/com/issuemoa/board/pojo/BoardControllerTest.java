@@ -25,7 +25,6 @@ public class BoardControllerTest {
                 "MacOS",
                 "https://apple.com",
                 "apple.jpg",
-                null,
                 null
         );
         Assertions.assertTrue(boardService.save(boardSaveRequest) > 0L);
@@ -36,7 +35,6 @@ public class BoardControllerTest {
                 "MacOS2",
                 "https://apple2.com",
                 "apple2.jpg",
-                null,
                 null
         );
         Assertions.assertTrue(boardService.save(boardSaveRequest2) > 0L);
