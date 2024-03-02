@@ -14,7 +14,7 @@ public record BoardFavoritesResponse(
         @Schema(description = "Board ID")
         String boardId,
         @Schema(description = "사용자 ID")
-        String userId,
+        Long userId,
         @Schema(description = "news / youtube")
         String type,
         @Schema(description = "제목")
