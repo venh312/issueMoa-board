@@ -37,14 +37,9 @@ public class UsersRestApi {
         }
     }
 
-    public String getUserId(HttpServletRequest httpServletRequest) {
+    public Long getUserId(HttpServletRequest httpServletRequest) {
         HashMap<String, Object> userInfo = getUserInfo(httpServletRequest);
-        String userId = (String) userInfo.get("id");
-
-        if (StringUtils.isBlank(userId))
-            throw new UsersNotFoundException("사용자 ID가 존재하지 않습니다.");
-
-        return userId;
+        return (Long) userInfo.get("id");
     }
 
 }

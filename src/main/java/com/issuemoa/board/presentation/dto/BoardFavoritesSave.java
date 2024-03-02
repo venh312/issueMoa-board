@@ -22,7 +22,7 @@ public record BoardFavoritesSave(
         @Schema(description = "등록시간")
         LocalDateTime registerDateTime) {
 
-        public BoardFavorites toEntity(String userId) {
+        public BoardFavorites toEntity(Long userId) {
                return BoardFavorites.builder()
                        .boardId(this.boardId)
                        .userId(userId)

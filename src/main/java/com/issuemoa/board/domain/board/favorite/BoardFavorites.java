@@ -24,7 +24,7 @@ public class BoardFavorites {
     String boardId;
 
     @Schema(description = "User ID")
-    private String userId;
+    private Long userId;
 
     @Schema(description = "news / youtube")
     private String type;
