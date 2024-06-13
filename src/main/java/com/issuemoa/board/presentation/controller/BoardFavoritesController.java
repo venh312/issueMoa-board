@@ -13,7 +13,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Tag(name = "Board Favorites", description = "관심 이슈(NEWS / YOUTUBE) API")
@@ -29,9 +28,9 @@ public class BoardFavoritesController {
     @Operation(summary = "관심 이슈 등록", description = "관심 이슈를 등록한다.")
     @PostMapping("/board/favorites")
     public ResponseEntity<BoardFavoritesResponse> save(
-            HttpServletRequest httpServletRequest,
+            @RequestHeader("Authorization") String token,
             @RequestBody BoardFavoritesSave boardFavoritesSave){
-        return ResponseEntity.ok(boardFavoritesService.save(httpServletRequest, boardFavoritesSave));
+        return ResponseEntity.ok(boardFavoritesService.save(token, boardFavoritesSave));
     }
 
     @ApiResponses(value = {
@@ -39,7 +38,7 @@ public class BoardFavoritesController {
                 content = @Content(schema = @Schema(implementation = BoardFavoritesResponse.class)))})
     @Operation(summary = "관심 이슈 목록", description = "관심 NEWS / YOUTUBE 목록을 불러온다.")
     @GetMapping("/board/favorites")
-    public ResponseEntity<List<BoardFavoritesResponse>> findByUserId(HttpServletRequest httpServletRequest){
-        return ResponseEntity.ok(boardFavoritesService.findByUserId(httpServletRequest));
+    public ResponseEntity<List<BoardFavoritesResponse>> findByUserId(@RequestHeader("Authorization") String token){
+        return ResponseEntity.ok(boardFavoritesService.findByUserId(token));
     }
 }
