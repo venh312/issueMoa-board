@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 @Slf4j
 public record BoardFavoritesSave(
         @Schema(description = "Board ID")
-        String boardId,
+        String id,
         @Schema(description = "news / youtube")
         String type,
         @Schema(description = "제목")
@@ -24,7 +24,7 @@ public record BoardFavoritesSave(
 
         public BoardFavorites toEntity(Long userId) {
                return BoardFavorites.builder()
-                       .boardId(this.boardId)
+                       .boardId(this.id)
                        .userId(userId)
                        .type(this.type)
                        .title(this.title)
