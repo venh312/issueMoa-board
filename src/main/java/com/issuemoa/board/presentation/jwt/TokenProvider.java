@@ -27,6 +27,6 @@ public class TokenProvider {
 
     public Long getUserId(String token) {
         Claims claims = getClaims(token);
-        return (Long) claims.get("id");
+        return ((Number) claims.get("userId")).longValue();
     }
 }
