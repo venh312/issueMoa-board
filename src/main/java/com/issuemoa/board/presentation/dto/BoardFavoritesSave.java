@@ -18,9 +18,7 @@ public record BoardFavoritesSave(
         @Schema(description = "URL")
         String url,
         @Schema(description = "썸네일")
-        String thumbnail,
-        @Schema(description = "등록시간")
-        LocalDateTime registerDateTime) {
+        String thumbnail) {
 
         public BoardFavorites toEntity(Long userId) {
                return BoardFavorites.builder()
