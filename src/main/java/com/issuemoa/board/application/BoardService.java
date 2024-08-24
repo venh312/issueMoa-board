@@ -15,7 +15,7 @@ import java.util.List;
 public class BoardService {
     private final BoardRepository boardRepository;
 
-    @Cacheable(value = "board", key = "#type", cacheManager = "contentCacheManager")
+    @Cacheable(value = "board", key = "#type + '_' + #skip + '_' + #limit", cacheManager = "contentCacheManager")
     public List<BoardResponse> findByType(String type, int skip, int limit) {
         PageRequest pageable = PageRequest.of(skip, limit);
         return boardRepository.findByType(type, pageable);
