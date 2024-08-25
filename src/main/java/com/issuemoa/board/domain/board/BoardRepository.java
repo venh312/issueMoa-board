@@ -7,5 +7,5 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import java.util.List;
 
 public interface BoardRepository extends MongoRepository<Board, String> {
-    List<BoardResponse> findByType(String type, Pageable pageable);
+    List<BoardResponse> findByType(String type, Pageable pageable, Sort sort);
 }

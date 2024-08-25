@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
@@ -18,6 +19,6 @@ public class BoardService {
     @Cacheable(value = "board", key = "#type + '_' + #skip + '_' + #limit", cacheManager = "contentCacheManager", unless = "#result == null || #result.isEmpty()")
     public List<BoardResponse> findByType(String type, int skip, int limit) {
         PageRequest pageable = PageRequest.of(skip, limit);
-        return boardRepository.findByType(type, pageable);
+        return boardRepository.findByType(type, pageable, Sort.by(Sort.Direction.DESC, "registerDateTime"));
     }
 }
