@@ -26,9 +26,10 @@ public class KeywordController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "조회 성공", content = @Content(schema = @Schema(implementation = Keyword.class)))})
     @Operation(summary = "키워드 목록", description = "키워드 목록을 불러온다.")
-    @GetMapping("/keyword/{minusDay}")
+    @GetMapping("/keyword")
     public ResponseEntity<List<Keyword>> findAll(
-                @Parameter(description = "값 1: (Today -1 Day), 2: (Today -2 Day) ...") @RequestParam(required = false, defaultValue = "1") int minusDay) {
+                @Parameter(description = "값 1: (Today -1 Day), 2: (Today -2 Day) ...")
+                @RequestParam(required = false, defaultValue = "1") int minusDay) {
         return ResponseEntity.ok(keywordService.findTop10ByBaseDateTimeOrderByCountDesc(minusDay));
     }
 }
