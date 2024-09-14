@@ -21,4 +21,8 @@ public class BoardService {
         PageRequest pageable = PageRequest.of(skip, limit, Sort.by("registerDateTime").descending());
         return boardRepository.findByType(type, pageable);
     }
+
+    public List<BoardResponse> findByTitleContaining(String title) {
+        return boardRepository.findByTitleContaining(title);
+    }
 }
