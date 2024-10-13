@@ -27,7 +27,7 @@ public class BoardController {
 
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "조회 성공", content = @Content(schema = @Schema(implementation = BoardResponse.class)))})
-    @Operation(summary = "이슈 목록", description = "NEWS / YOUTUBE 목록을 불러온다.")
+    @Operation(summary = "NEWS / YOUTUBE 목록 조회")
     @GetMapping("/board/{type}")
     public ResponseEntity<List<BoardResponse>> findAll(Locale locale,
             @Parameter(description = "news / youtube") @PathVariable("type") String type,
@@ -39,7 +39,7 @@ public class BoardController {
 
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "조회 성공", content = @Content(schema = @Schema(implementation = BoardResponse.class)))})
-    @Operation(summary = "이슈 목록(제목 검색)", description = "제목으로 게시글 검색")
+    @Operation(summary = "이슈 목록 조회(제목 검색)")
     @GetMapping("/board")
     public ResponseEntity<List<BoardResponse>> findByTitleContaining(@Parameter(description = "제목") @RequestParam("title") String title) {
         return ResponseEntity.ok(boardService.findByTitleContaining(title));
