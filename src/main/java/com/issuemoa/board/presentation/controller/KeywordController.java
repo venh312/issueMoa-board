@@ -25,7 +25,7 @@ public class KeywordController {
 
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "조회 성공", content = @Content(schema = @Schema(implementation = Keyword.class)))})
-    @Operation(summary = "키워드 목록", description = "키워드 목록을 불러온다.")
+    @Operation(summary = "[TOP 10] 키워드 목록 조회")
     @GetMapping("/keyword")
     public ResponseEntity<List<Keyword>> findAll(
                 @Parameter(description = "값 1: (Today -1 Day), 2: (Today -2 Day) ...")

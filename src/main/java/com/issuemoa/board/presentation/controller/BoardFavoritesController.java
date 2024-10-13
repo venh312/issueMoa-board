@@ -25,7 +25,7 @@ public class BoardFavoritesController {
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "등록 성공",
             content = @Content(schema = @Schema(implementation = BoardFavoritesResponse.class)))})
-    @Operation(summary = "관심 이슈 등록", description = "관심 이슈를 등록한다.")
+    @Operation(summary = "관심 이슈 등록")
     @PostMapping("/board/favorites")
     public ResponseEntity<BoardFavoritesResponse> save(
             @RequestHeader("Authorization") String token,
@@ -36,7 +36,7 @@ public class BoardFavoritesController {
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "조회 성공",
             content = @Content(schema = @Schema(implementation = BoardFavoritesResponse.class)))})
-    @Operation(summary = "관심 이슈 목록", description = "관심 NEWS / YOUTUBE 목록을 불러온다.")
+    @Operation(summary = "관심 NEWS / YOUTUBE 목록 조회")
     @GetMapping("/board/favorites")
     public ResponseEntity<List<BoardFavoritesResponse>> findByUserId(@RequestHeader("Authorization") String token){
         return ResponseEntity.ok(boardFavoritesService.findByUserId(token));

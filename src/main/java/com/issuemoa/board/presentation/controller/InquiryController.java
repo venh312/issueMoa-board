@@ -22,7 +22,7 @@ public class InquiryController {
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "등록 성공"),
         @ApiResponse(responseCode = "404", description = "존재하지 않는 리소스 접근")})
-    @Operation(summary = "고객문의 등록", description = "고객 문의를 등록한다.")
+    @Operation(summary = "고객문의 등록")
     @PostMapping("/inquiry")
     public ResponseEntity<InquirySaveResponse> save(@RequestBody InquirySaveRequest inquirySaveRequest) {
         return ResponseEntity.ok(inquiryService.save(inquirySaveRequest));
