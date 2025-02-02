@@ -44,7 +44,7 @@ public class TokenProvider {
 
         if (parseToken.isEmpty()) return 0L;
 
-        Claims claims = getClaims(token);
+        Claims claims = getClaims(parseToken);
         return ((Number) claims.get("id")).longValue();
     }
 
