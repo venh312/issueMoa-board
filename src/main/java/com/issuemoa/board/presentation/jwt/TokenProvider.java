@@ -21,7 +21,7 @@ public class TokenProvider {
             // JWT 파싱
             return Jwts.parserBuilder().setSigningKey(jwtProperties.getSecretKey())
                     .build()
-                    .parseClaimsJws(resolveToken(token))
+                    .parseClaimsJws(token)
                     .getBody();
         } catch (MalformedJwtException e) {
             log.error("[getClaims] MalformedJwtException Message : {}", e.getMessage());
@@ -40,6 +40,10 @@ public class TokenProvider {
     }
 
     public Long getUserId(String token) {
+        String parseToken = resolveToken(token);
+
+        if (parseToken.isEmpty()) return 0L;
+
         Claims claims = getClaims(token);
         return ((Number) claims.get("id")).longValue();
     }
