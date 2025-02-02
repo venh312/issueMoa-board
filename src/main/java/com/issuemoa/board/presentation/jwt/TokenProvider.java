@@ -19,11 +19,9 @@ public class TokenProvider {
     public Claims getClaims(String token) {
         try {
             // JWT 파싱
-            log.info("jwtProperties.getSecretKey() :: {}", jwtProperties.getSecretKey());
-            log.info("jwtProperties.getSecretKey() token :: {}", token);
             return Jwts.parserBuilder().setSigningKey(jwtProperties.getSecretKey())
                     .build()
-                    .parseClaimsJws(token)
+                    .parseClaimsJws(resolveToken(token))
                     .getBody();
         } catch (MalformedJwtException e) {
             log.error("[getClaims] MalformedJwtException Message : {}", e.getMessage());
@@ -42,7 +40,7 @@ public class TokenProvider {
     }
 
     public Long getUserId(String token) {
-        Claims claims = getClaims(resolveToken(token));
+        Claims claims = getClaims(token);
         return ((Number) claims.get("id")).longValue();
     }
 
