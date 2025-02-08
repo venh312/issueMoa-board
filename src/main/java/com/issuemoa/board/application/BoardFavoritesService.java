@@ -9,6 +9,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Slf4j
@@ -18,14 +20,14 @@ public class BoardFavoritesService {
     private final BoardFavoritesRepository boardFavoritesRepository;
     private final TokenProvider tokenProvider;
 
-    public BoardFavoritesResponse save(String token, BoardFavoritesSave boardFavoritesSave){
-        Long userId = tokenProvider.getUserId(token);
+    public BoardFavoritesResponse save(HttpServletRequest request, BoardFavoritesSave boardFavoritesSave){
+        Long userId = tokenProvider.getUserId(request);
         BoardFavorites favorites = boardFavoritesRepository.save(boardFavoritesSave.toEntity(userId));
         return BoardFavoritesResponse.toDto(favorites);
     }
 
-    public List<BoardFavoritesResponse> findByUserId(String token){
-        Long userId = tokenProvider.getUserId(token);
+    public List<BoardFavoritesResponse> findByUserId(HttpServletRequest request){
+        Long userId = tokenProvider.getUserId(request);
         return boardFavoritesRepository.findByUserId(userId, Sort.by(Sort.Direction.DESC, "registerDateTime"));
     }
 }

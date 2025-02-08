@@ -1,11 +1,9 @@
 package com.issuemoa.board.presentation.controller;
 
-import com.issuemoa.board.presentation.dto.InquirySaveRequest;
 import com.issuemoa.board.application.InquiryService;
+import com.issuemoa.board.presentation.dto.InquirySaveRequest;
 import com.issuemoa.board.presentation.dto.InquirySaveResponse;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -19,9 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class InquiryController {
     private final InquiryService inquiryService;
 
-    @ApiResponses(value = {
-        @ApiResponse(responseCode = "200", description = "등록 성공"),
-        @ApiResponse(responseCode = "404", description = "존재하지 않는 리소스 접근")})
     @Operation(summary = "고객문의 등록")
     @PostMapping("/inquiry")
     public ResponseEntity<InquirySaveResponse> save(@RequestBody InquirySaveRequest inquirySaveRequest) {
