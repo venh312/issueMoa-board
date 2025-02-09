@@ -9,4 +9,5 @@ import java.util.List;
 public interface BoardRepository extends MongoRepository<Board, String> {
     List<BoardResponse> findByType(String type, Pageable pageable);
     List<BoardResponse> findByTitleContaining(String title);
+    int countByType(String type);
 }
