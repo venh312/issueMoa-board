@@ -22,6 +22,11 @@ public class BoardService {
         return boardRepository.findByType(type, pageable);
     }
 
+    public int getTotalPage(String type, int limit) {
+        int totalCnt = boardRepository.countByType(type);
+        return (int) Math.ceil((float) totalCnt / limit);
+    }
+
     public List<BoardResponse> findByTitleContaining(String title) {
         return boardRepository.findByTitleContaining(title);
     }
